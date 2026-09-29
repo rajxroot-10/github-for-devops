@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivshambho Self Drive Car Service | Pune</title>
+    <!-- Professional System Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-body: #f4f6f9;
+            --bg-surface: #ffffff;
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #f59e0b; /* Vibrant Warm Amber / Gold */
+            --accent-hover: #d97706;
+            --whatsapp: #25d366;
+            --whatsapp-hover: #20ba5a;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Sticky Header */
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 6%;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent);
+            background: rgba(245, 158, 11, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .phone-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            color: #b45309;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .phone-badge:hover {
+            background: #fef3c7;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 6% 60px 6%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -200px;
+            right: -200px;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Trust Badges in Hero */
+        .trust-pills {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .trust-pill {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e2e8f0;
+        }
+
+        .trust-pill i {
+            color: var(--accent);
+        }
+
+        /* Main Container & Fleet Grid */
+        .main-container {
+            max-width: 1300px;
+            margin: -30px auto 0 auto;
+            padding: 0 5% 60px 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Filter Controls Bar */
+        .controls-bar {
+            background: var(--bg-surface);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 45px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        /* Car Grid Layout */
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .car-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .car-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
+
+        .car-image-container {
+            width: 100%;
+            height: 190px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .car-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .car-card:hover .car-image-container img {
+            transform: scale(1.08);
+        }
+
+        .fuel-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
+            color: var(--accent);
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 6px;
+        }
+
+        .car-details {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .car-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .car-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .car-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .price-tag {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .price-tag span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .book-btn {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .book-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* High-Tech Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg-surface);
+            width: 100%;
+            max-width: 480px;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.9);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background: #e2e8f0;
+            color: var(--primary);
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .modal-subtitle {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 11px 14px;
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+        }
+
+        .whatsapp-confirm-btn {
+            width: 100%;
+            background: var(--whatsapp);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-confirm-btn:hover {
+            background: var(--whatsapp-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Professional Footer */
+        footer {
+            background: var(--primary);
+            color: #cbd5e1;
+            padding: 60px 6% 30px 6%;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-col p, .footer-col ul {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .footer-col ul li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .thank-you {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-car-side"></i>
+            Shivshambho Self Drive
+        </div>
+        <div class="header-contact">
+            <a href="tel:99223330092" class="phone-badge">
+                <i class="fa-solid fa-phone"></i> +91 99223330092
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Shivshambho Self Drive <span>Car Service</span></h1>
+            <p>Experience absolute freedom on the road with Pune’s most trusted, clean, and well-maintained self-drive vehicle fleet.</p>
+            
+            <div class="trust-pills">
+                <div class="trust-pill"><i class="fa-solid fa-shield-halved"></i> 100% Verified Fleet</div>
+                <div class="trust-pill"><i class="fa-solid fa-bolt"></i> Instant WhatsApp Booking</div>
+                <div class="trust-pill"><i class="fa-solid fa-clock-rotate-left"></i> 24/7 Roadside Assistance</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <div class="main-container">
+        
+        <!-- Filter and Search Controls -->
+        <div class="controls-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search car model (e.g., Swift, Ertiga, Baleno)..." oninput="filterCars()">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="setFilter('all', this)">All Cars</button>
+                <button class="filter-btn" onclick="setFilter('Petrol', this)">Petrol</button>
+                <button class="filter-btn" onclick="setFilter('Diesel', this)">Diesel</button>
+                <button class="filter-btn" onclick="setFilter('CNG', this)">CNG</button>
+            </div>
+        </div>
+
+        <!-- Car Grid -->
+        <div class="car-grid" id="carGrid">
+            <!-- Populated Dynamically -->
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h3 class="modal-title" id="modalCarName">Car Model</h3>
+            <div class="modal-subtitle" id="modalCarDetails">Rent & Fuel Specs</div>
+            
+            <form id="bookingForm">
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label for="userName">Full Name</label>
+                        <input type="text" id="userName" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" id="startDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="startTime">Start Time</label>
+                        <input type="time" id="startTime" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" id="endDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endTime">End Time</label>
+                        <input type="time" id="endTime" class="form-control" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="whatsapp-confirm-btn">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Confirm Booking via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Professional Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Documents Required</h3>
+                <ul>
+                    <li>Original Driving License</li>
+                    <li>Aadhar Card / PAN Card (Original)</li>
+                    <li>Local Address Proof</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Policies & Limits</h3>
+                <p><strong>Security Deposit:</strong> Applicable as per car category and fully refundable upon safe vehicle return.</p>
+                <p style="margin-top: 8px;"><strong>Km Limit & 24hr Policy:</strong> Standard daily kilometre limits apply. Calculated on a 24-hour cycle from pickup.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Location & Contact</h3>
+                <p><i class="fa-solid fa-location-dot" style="color: var(--accent); margin-right: 6px;"></i> Near Elpro City Square Mall, Chinchwad, Pune - 411033</p>
+                <p style="margin-top: 8px;"><i class="fa-solid fa-phone" style="color: var(--accent); margin-right: 6px;"></i> +91 99223330092</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="thank-you">Thank You...!!! 🙏</div>
+            <p>&copy; 2026 Shivshambho Self Drive Car Service. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Application Script Logic -->
+    <script>
+        const carFleet = [
+            { id: 1, name: "WagnoR", fuel: "Petrol / CNG", type: "CNG", rent: "₹1800 / Day", image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c351?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, name: "Swift", fuel: "Petrol", type: "Petrol", rent: "₹2000 / Day", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, name: "New Swift", fuel: "Petrol", type: "Petrol", rent: "₹2300 / Day", image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
+            { id: 4, name: "Baleno", fuel: "Petrol", type: "Petrol", rent: "₹2200 / Day", image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80" },
+            { id: 5, name: "Fronx", fuel: "Petrol", type: "Petrol", rent: "₹2500 / Day", image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
+            { id: 6, name: "Breeza", fuel: "Diesel / Petrol", type: "Diesel", rent: "₹2800 / Day", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=600&q=80" },
+            { id: 7, name: "Old Ertiga", fuel: "Diesel", type: "Diesel", rent: "₹3000 / Day", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
+            { id: 8, name: "New Ertiga", fuel: "Petrol / CNG", type: "CNG", rent: "₹3500 / Day", image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        let currentFilter = 'all';
+        const carGrid = document.getElementById('carGrid');
+        const bookingModal = document.getElementById('bookingModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalCarName = document.getElementById('modalCarName');
+        const modalCarDetails = document.getElementById('modalCarDetails');
+        const bookingForm = document.getElementById('bookingForm');
+
+        let selectedCar = null;
+
+        function renderFleet(items) {
+            if (items.length === 0) {
+                carGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No cars found matching your search.</div>`;
+                return;
+            }
+
+            carGrid.innerHTML = items.map(car => `
+                <div class="car-card">
+                    <div class="car-image-container">
+                        <span class="fuel-badge">${car.fuel}</span>
+                        <img src="${car.image}" alt="${car.name}" loading="lazy">
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">${car.name}</h3>
+                        <div class="car-meta">Well-maintained & Sanitized</div>
+                        <div class="car-price-row">
+                            <div class="price-tag">
+                                ${car.rent}
+                            </div>
+                            <button class="book-btn" onclick="openBookingModal(${car.id})">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setFilter(category, btnElement) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+            filterCars();
+        }
+
+        function filterCars() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = carFleet.filter(car => {
+                const matchesSearch = car.name.toLowerCase().includes(query);
+                const matchesCategory = currentFilter === 'all' || car.fuel.includes(currentFilter);
+                return matchesSearch && matchesCategory;
+            });
+            renderFleet(filtered);
+        }
+
+        window.openBookingModal = function(carId) {
+            selectedCar = carFleet.find(c => c.id === carId);
+            if (selectedCar) {
+                modalCarName.innerText = selectedCar.name;
+                modalCarDetails.innerText = `Rental Rate: ${selectedCar.rent} | Fuel: ${selectedCar.fuel}`;
+                bookingModal.classList.add('active');
+            }
+        }
+
+        closeModal.addEventListener('click', () => bookingModal.classList.remove('active'));
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) bookingModal.classList.remove('active');
+        });
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const userName = document.getElementById('userName').value.trim();
+            const startDate = document.getElementById('startDate').value;
+            const startTime = document.getElementById('startTime').value;
+            const endDate = document.getElementById('endDate').value;
+            const endTime = document.getElementById('endTime').value;
+
+            if (!userName || !startDate || !startTime || !endDate || !endTime) {
+                alert("Please fill in all details before proceeding.");
+                return;
+            }
+
+            const targetNumber = "9199223330092";
+            const message = `Hello Shivshambho Self Drive, I would like to book the ${selectedCar.name} from ${startDate} ${startTime} to ${endDate} ${endTime}. Name: ${userName}. Please confirm availability.`;
+            
+            window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            bookingModal.classList.remove('active');
+            bookingForm.reset();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => renderFleet(carFleet));
+    </script>
+</body>
+</html>
